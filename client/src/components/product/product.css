@@ -1,0 +1,127 @@
+.product-section {
+  display: flex;
+  margin-left: 70px;
+  margin-top: 30px;
+}
+.product-section > * {
+  padding: 20px;
+}
+.product-section .divider {
+  border-bottom: 1px solid #e4e3e3;
+  margin: 15px 0;
+  width: 100%;
+}
+.product-section .left {
+  width: 70%;
+}
+.product-section .middle {
+  width: 80%;
+}
+.product-section .right {
+  width: 500px;
+}
+
+.product-section .left img {
+  width: 100%;
+}
+.product-section .middle .product-details h4 {
+  font-weight: 500;
+}
+.product-section .middle .product-details .price {
+  font-size: 24px;
+  color: #d61c45;
+}
+.product-section span {
+  font-size: 28px;
+  color: #000
+}
+.product-section span .sup {
+  font-size: 13px;
+  position: relative;
+  top: -10px;
+}
+.product-section .middle .product-details .mrp {
+  color: #565959;
+  font-size: 12px;
+}
+.product-section .middle .product-details .taxes {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.product-section .middle .about-product h6 {
+  font-weight: 600;
+}
+.product-section .middle .about-product ul {
+  margin-left: -14px;
+  font-size: 14px;
+}
+.product-section .right {
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  margin: 0 20px 0 5px;
+  height: 100%;
+}
+.product-section .right p {
+  font-size: 14px;
+  font-weight: 600;
+}
+.product-section .right p span {
+  color: #0071A5;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.product-section .right p span:hover {
+  color: #D16F46;
+  text-decoration: underline;
+}
+.product-section .right button {
+  width: 100%;
+  margin: 4px 0;
+  border: none;
+  font-size: 13px;
+  background-color: #FFD814;
+  height: 32px;
+  border-radius: 16px;
+  box-shadow: 0 2px 5px #ddd;
+  cursor: pointer;
+}
+.product-section .right button:hover {
+  background-color: #F7CA00;
+}
+.product-section .right button:nth-child(4) {
+  background-color: #FFA41C;
+}
+.product-section .right button:nth-child(4):hover {
+  background-color: #FA8900;
+}
+
+@media screen and (max-width: 992px) {
+  .product-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0px;
+  }
+  .product-section .left {
+    width: 50%;
+  }
+  .product-section .middle {
+    width: 80%;
+  }
+  .product-section .right {
+    margin: 0;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .product-section .left {
+    width: 90%;
+  }
+  .product-section .middle {
+    width: 90%;
+  }
+  .product-section .right {
+    width: 250px;
+  }
+}

@@ -1,0 +1,182 @@
+.signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 14px;
+}
+.signin .logo {
+  width: 103px;
+}
+.signin .logo img {
+  width: 100%;
+}
+.signin .form-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px 26px;
+  width: 350px;
+  margin-top: 18px;
+  margin-bottom: 22px;
+}
+.signin .form-details h3 {
+  margin-bottom: 0px;
+}
+.signin .form-details form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.signin .form-details form label {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 15px;
+  margin-left: 2px;
+  margin-bottom: 1px;
+}
+.signin .form-details form input {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  height: 31px;
+  padding-left: 7px;
+  font-size: 13px;
+}
+.signin .form-details form input:focus {
+  outline: none;
+  box-shadow: 0 0 7px #ffa319;
+  border: 1px solid #CA8034;
+}
+.signin .form-details form button {
+  margin-top: 20px;
+  border: 1px solid #666;
+  border-radius: 3px;
+  height: 31px;
+  font-size: 13px;
+  background: linear-gradient(to top, #eebe45, #ffe39b);
+}
+.signin .form-details form button:hover {
+  background: linear-gradient(to top, #ecb52b, #fcda85);
+}
+.signin .form-details .mobile-number {
+  width: 100%;
+  display: flex;
+}
+.signin .form-details .mobile-number .country-code {
+  width: 100px;
+  font-size: 13px;
+  margin-right: 10px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  height: 31px;
+  padding-left: 7px;
+  background: linear-gradient(to top, #e7e7e7, #f7f7f7);
+  cursor: pointer;
+}
+.signin .form-details .mobile-number input {
+  width: 100%;
+}
+
+.signin .new-to-amazon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 350px;
+}
+.signin .new-to-amazon p {
+  font-size: 12px;
+  width: 100%;
+  color: #777;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signin .new-to-amazon p:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #e7e7e7;
+}
+.signin .new-to-amazon p span {
+  background-color: #fff;
+  padding: 0 5px;
+  position: relative;
+  z-index: 2;
+}
+.signin .new-to-amazon a {
+  width: 100%;
+  margin-top: -5px;
+}
+.signin .new-to-amazon button {
+  width: 100%;
+  font-size: 13px;
+  border: 1px solid #8D9096;
+  border-radius: 3px;
+  height: 31px;
+  font-size: 13px;
+  background: linear-gradient(to top, #e4e6e9, #FCFCFD);
+}
+.signin .new-to-amazon button:hover {
+  background: linear-gradient(to top, #d1d3d6, #e8e8e9);
+}
+
+.signup .form-details form {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+}
+.signin .already-have-account {
+  padding-top: 25px;
+}
+.signin .already-have-account p {
+  font-size: 13px;
+}
+.signin .already-have-account p a {
+  text-decoration: none;
+  color: #248FC1;
+}
+.signin .already-have-account p a:hover {
+  text-decoration: underline;
+  color: #D14A04;
+}
+.signin .already-have-account p a #arrow-right {
+  font-size: 16px;
+  margin-top: -2px;
+  margin-left: -3px;
+} 
+
+.signin .alert {
+  display: none;
+  width: 350px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-family: 'Amazon Ember', sans-serif !important;
+  color: #111;
+  font-size: 14px;
+}
+.signin .alert .alert-title {
+  font-family: 'Amazon Ember', sans-serif !important;
+  font-size: 17px;
+}
+.signin .alert ul {
+  margin-left: -40px;
+}
+.signin .alert .MuiAlert-message {
+  padding-bottom: 0px !important;
+}
+.signin .error-alert {
+  border-color: #c40000;
+  box-shadow: inset 0px 0px 5px #f1b7b7;
+}
+.signin .error-alert .alert-title, .signin .error-alert .MuiAlert-icon {
+  color: #c40000;
+}
+.signin .success-alert {
+  border-color: #5EB762;
+  box-shadow: inset 0px 0px 5px #b2e0b5;
+}
