@@ -31,7 +31,7 @@ const SignIn = () => {
     const { email, password } = signInInfo; 
 
     try {
-      const res = await axios.post("http://localhost:8000/api/login", {
+      const res = await axios.post("/api/login", {
         email, password
       }, {
         headers: {

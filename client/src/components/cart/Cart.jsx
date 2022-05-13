@@ -17,7 +17,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/getAuthUser', {withCredentials: true})
+    axios.get('/api/getAuthUser', {withCredentials: true})
         .then(function(res) {
           setCartArr(res.data.cart);
           setIsLoading(false);
@@ -59,14 +59,14 @@ const Cart = () => {
     };
     script.onload = async () => {
       try {
-        const res = await axios.post("http://localhost:8000/api/create-order", {
+        const res = await axios.post("/api/create-order", {
           amount: orderAmount + '00'
         }, {
           withCredentials: true
         })
         
         const { id, amount, currency } = res.data.order;
-        const { key } = await axios.get("http://localhost:8000/api/get-razorpay-key");
+        const { key } = await axios.get("/api/get-razorpay-key");
 
         var today = new Date();
         var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
@@ -79,7 +79,7 @@ const Cart = () => {
           name: "Test payment",
           description: "Thankyou for your order",
           handler: async function(response) {
-            const result = await axios.post("http://localhost:8000/api/pay-order", {
+            const result = await axios.post("/api/pay-order", {
               orderedProducts: orderedProducts,
               dateOrdered: date,
               amount: amount,

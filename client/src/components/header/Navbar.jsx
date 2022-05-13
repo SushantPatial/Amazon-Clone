@@ -29,11 +29,6 @@ const Navbar = () => {
     }
   })
 
-  // window.onload = async function() {
-  //   const userData = await axios.get("http://localhost:8000/api/getAuthUser");
-  //   console.log(userData);
-  // };
-
   const [loginMsg, setLoginMsg] = useState("Sign in");
   const [cartValue, setCartValue] = useState('0');
   const [profilePhoto, setProfilePhoto] = useState(<NavLink to="/login" className='profile'><PersonIcon id="profile-icon" /></NavLink>);
@@ -46,7 +41,7 @@ const Navbar = () => {
       // Fetching user data
       async function fetchUser() {
         try {
-          const res = await axios.get("http://localhost:8000/api/getAuthUser", {
+          const res = await axios.get("/api/getAuthUser", {
             withCredentials: true
           });
   
@@ -82,7 +77,7 @@ const Navbar = () => {
 
       // Fetching products
       async function fetchProducts() {
-        const res = await axios.get("http://localhost:8000/api/products");
+        const res = await axios.get("/api/products");
         setProducts(res.data);
       }
 
@@ -94,7 +89,7 @@ const Navbar = () => {
     // Logout 
       function logout() {
         try {
-          const res = axios.get("http://localhost:8000/api/logout", {
+          const res = axios.get("/api/logout", {
             withCredentials: true
           })
 

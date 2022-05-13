@@ -17,7 +17,7 @@ const Product = () => {
   useEffect(function() {
     async function fetchSingleProduct() {
       try {
-        const res = await axios.get('http://localhost:8000/api/product/' + id);
+        const res = await axios.get('/api/product/' + id);
         setProduct(res.data);
         setIsLoading(false);
       } catch (error) {
@@ -33,7 +33,7 @@ const Product = () => {
   // Add to cart
   async function addToCart(id) {
     try {
-      const res = await axios.post('http://localhost:8000/api/addtocart/' + id, {
+      const res = await axios.post('/api/addtocart/' + id, {
         product
       }, {
         headers: {
