@@ -41,7 +41,7 @@ const Navbar = () => {
       // Fetching user data
       async function fetchUser() {
         try {
-          const res = await axios.get("/api/getAuthUser", {
+          const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
             withCredentials: true
           });
   
@@ -77,7 +77,7 @@ const Navbar = () => {
 
       // Fetching products
       async function fetchProducts() {
-        const res = await axios.get("/api/products");
+        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/products");
         setProducts(res.data);
       }
 
@@ -89,7 +89,7 @@ const Navbar = () => {
     // Logout 
       function logout() {
         try {
-          const res = axios.get("/api/logout", {
+          const res = axios.get("https://amazonclone-sp.herokuapp.com/api/logout", {
             withCredentials: true
           })
 
@@ -129,16 +129,16 @@ const Navbar = () => {
       >
         <div className='profile-options'>
           <h5>Hello, {loginMsg}</h5>
-          <NavLink to='/profile'>
+          <a href='/profile'>
             <div className='profile-option'>
               <PersonOutlineOutlinedIcon className='profile-icon' /> Your Account
             </div>
-          </NavLink>
-          <NavLink to='/orders'>
+          </a>
+          <a href='/orders'>
             <div className='profile-option'>
               <ShoppingCartOutlinedIcon className='profile-icon' /> Your Orders
             </div>
-          </NavLink>
+          </a>
           <div>
             <div className='profile-option' onClick={ logout }>
               <LogoutOutlinedIcon className='profile-icon' /> Sign Out

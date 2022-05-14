@@ -8,6 +8,7 @@ import Loader from '../loader/Loader';
 
 const Profile = () => {
 
+  const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState();
 
   const navigate = useNavigate();
@@ -15,12 +16,13 @@ const Profile = () => {
   useEffect(function() {
     async function fetchUser() {
       try {
-        const res = await axios.get("/api/getAuthUser", {
+        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
           withCredentials: true
         })
   
         if (res) {
           setUserData(res.data);
+          setIsLoading(false);
         }
       } catch (error) {
         if (error.response.data.message === "No token provided") {
@@ -40,10 +42,15 @@ const Profile = () => {
     const fname = name.substring(0, name.indexOf(' ')) + "'s Account";
 
     return (
-      <div className='profile'>
-        <NameBanner name={fname} />
-        <UserDetails user={userData} />
-      </div>
+      <>
+        {
+          isLoading ? <Loader /> :
+          <div className='profile'>
+            <NameBanner name={fname} />
+            <UserDetails user={userData} />
+          </div>
+        }
+      </>
     )
   } else {
     <Loader />

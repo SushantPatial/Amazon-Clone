@@ -11,6 +11,7 @@ import Loader from '../loader/Loader';
 
 const Orders = () => {
 
+  const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState();
 
   const navigate = useNavigate();
@@ -18,12 +19,13 @@ const Orders = () => {
   useEffect(function() {
     async function fetchUser() {
       try {
-        const res = await axios.get("/api/getAuthUser", {
+        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
           withCredentials: true
         })
   
         if (res) {
           setUserData(res.data);
+          setIsLoading(false);
         }
       } catch (error) {
         if (error.response.data.message === "No token provided") {
@@ -46,31 +48,34 @@ const Orders = () => {
     orders.reverse();
 
     return (
-      <div className='profile'>
-        <NameBanner name={fname} />
-        <div className='order-list'>
-          { orders.map((order, index) => {
-            let orderItem = order.orderInfo;
-            let orderedProducts = orderItem.products;
+      <>
+        { 
+          isLoading ? <Loader /> :
+          <div className='profile'>
+            <NameBanner name={fname} />
+            <div className='order-list'>
+              { orders.map((order, index) => {
+                let orderItem = order.orderInfo;
+                let orderedProducts = orderItem.products;
 
-            return (
-              <div className='order'>
-                <OrderTop order={ orderItem } />
-                <div className='order-bottom'>
-                  { orderedProducts.map((product, index) => {
-                      return <OrderedProduct key={index} product={product} />
-                    })  
-                  }
-                </div>
-              </div>
-            )
-          })}
-          
-        </div>
-      </div>
+                return (
+                  <div className='order'>
+                    <OrderTop order={ orderItem } />
+                    <div className='order-bottom'>
+                      { orderedProducts.map((product, index) => {
+                          return <OrderedProduct key={index} product={product} />
+                        })  
+                      }
+                    </div>
+                  </div>
+                )
+              })}
+              
+            </div>
+          </div>
+        }
+      </>
     )
-  } else {
-    <Loader />
   }
   
 }

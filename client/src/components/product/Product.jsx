@@ -17,7 +17,7 @@ const Product = () => {
   useEffect(function() {
     async function fetchSingleProduct() {
       try {
-        const res = await axios.get('/api/product/' + id);
+        const res = await axios.get('https://amazonclone-sp.herokuapp.com/api/product/' + id);
         setProduct(res.data);
         setIsLoading(false);
       } catch (error) {
@@ -33,7 +33,7 @@ const Product = () => {
   // Add to cart
   async function addToCart(id) {
     try {
-      const res = await axios.post('/api/addtocart/' + id, {
+      const res = await axios.post('https://amazonclone-sp.herokuapp.com/api/addtocart/' + id, {
         product
       }, {
         headers: {
@@ -50,23 +50,27 @@ const Product = () => {
   }
 
   const [userData, setUserData] = useState();
-  useEffect(() => {
-    axios.get('/api/getAuthUser', {withCredentials: true})
-        .then(function(res) {
-          setUserData(res.data);
-        })
-        .catch(function(error) {
-          if (error.response.data.message == "No token provided") {
-            navigate('/login');
-          } else {
-            console.log(error);
-          }
-        });
-  }, [])
+  async function fetchUser() {
+    try {
+      const res = await axios.get('https://amazonclone-sp.herokuapp.com/api/getAuthUser', {withCredentials: true});
+      if (res) {
+        setUserData(res.data);
+      }
+    } catch (error) {
+      if (error.response.data.message == "No token provided") {
+        navigate('/login');
+      } else {
+        console.log(error);
+      }
+    }
+  }
 
   // Buy now
   function loadRazorpay() {
     try {
+
+      fetchUser();
+
       const script = document.createElement("script");
       script.src="https://checkout.razorpay.com/v1/checkout.js";
 
@@ -84,14 +88,14 @@ const Product = () => {
             img: product.url
           }
 
-          const res = await axios.post("/api/create-order", {
+          const res = await axios.post("https://amazonclone-sp.herokuapp.com/api/create-order", {
             amount: orderAmount + '00'
           }, {
             withCredentials: true
           })
           
           const { id, amount, currency } = res.data.order;
-          const { key } = await axios.get("/api/get-razorpay-key");
+          const { key } = await axios.get("https://amazonclone-sp.herokuapp.com/api/get-razorpay-key");
 
           var today = new Date();
           var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
@@ -103,7 +107,7 @@ const Product = () => {
             order_id: id,
             name: product.name,
             handler: async function(response) {
-              const result = await axios.post("/api/pay-order", {
+              const result = await axios.post("https://amazonclone-sp.herokuapp.com/api/pay-order", {
                 orderedProducts: orderedProducts,
                 dateOrdered: date,
                 amount: amount,
