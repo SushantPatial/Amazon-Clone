@@ -4,6 +4,7 @@ import UserDetails from './UserDetails';
 import { useNavigate } from 'react-router-dom';
 import './profile.css';
 import axios from 'axios';
+import Loader from '../loader/Loader';
 
 const Profile = () => {
 
@@ -14,7 +15,7 @@ const Profile = () => {
   useEffect(function() {
     async function fetchUser() {
       try {
-        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
+        const res = await axios.get("/api/getAuthUser", {
           withCredentials: true
         })
   
@@ -44,6 +45,8 @@ const Profile = () => {
         <UserDetails user={userData} />
       </div>
     )
+  } else {
+    <Loader />
   }
   
 }

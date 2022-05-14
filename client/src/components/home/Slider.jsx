@@ -22,7 +22,7 @@ const Slider = (props) => {
   useEffect(function() {
     async function fetchProducts() {
       try {
-        const res = await axios.get('https://amazonclone-sp.herokuapp.com/api/products');
+        const res = await axios.get('/api/products');
         setProducts(res.data);
         setIsLoading(false);
       } catch (error) {

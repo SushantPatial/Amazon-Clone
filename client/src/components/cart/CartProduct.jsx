@@ -14,7 +14,7 @@ const CartProduct = (props) => {
 
     async function deleteFromCart() {
       try {
-        const res = await axios.delete("https://amazonclone-sp.herokuapp.com/api/delete/" + product.id, {
+        const res = await axios.delete("/api/delete/" + product.id, {
           withCredentials: true
         })
         if (res.data.message == "Item deleted successfully") {

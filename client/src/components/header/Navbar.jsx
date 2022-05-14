@@ -41,7 +41,7 @@ const Navbar = () => {
       // Fetching user data
       async function fetchUser() {
         try {
-          const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
+          const res = await axios.get("/api/getAuthUser", {
             withCredentials: true
           });
   
@@ -77,7 +77,7 @@ const Navbar = () => {
 
       // Fetching products
       async function fetchProducts() {
-        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/products");
+        const res = await axios.get("/api/products");
         setProducts(res.data);
       }
 
@@ -89,7 +89,7 @@ const Navbar = () => {
     // Logout 
       function logout() {
         try {
-          const res = axios.get("https://amazonclone-sp.herokuapp.com/api/logout", {
+          const res = axios.get("/api/logout", {
             withCredentials: true
           })
 

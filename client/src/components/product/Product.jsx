@@ -17,7 +17,7 @@ const Product = () => {
   useEffect(function() {
     async function fetchSingleProduct() {
       try {
-        const res = await axios.get('https://amazonclone-sp.herokuapp.com/api/product/' + id);
+        const res = await axios.get('/api/product/' + id);
         setProduct(res.data);
         setIsLoading(false);
       } catch (error) {
@@ -49,15 +49,20 @@ const Product = () => {
     }
   }
 
-
-  const today = new Date();
-  today.setDate(today.getDate() + 3);
-  const dayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const monthArr = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const day = dayArr[today.getDay()];
-  const date = today.getDate();
-  const month = monthArr[today.getMonth()];
-  const deliveryDate = day + ", " + date + " " + month;
+  const [userData, setUserData] = useState();
+  useEffect(() => {
+    axios.get('/api/getAuthUser', {withCredentials: true})
+        .then(function(res) {
+          setUserData(res.data);
+        })
+        .catch(function(error) {
+          if (error.response.data.message == "No token provided") {
+            navigate('/login');
+          } else {
+            console.log(error);
+          }
+        });
+  }, [])
 
   // Buy now
   function loadRazorpay() {
@@ -65,27 +70,28 @@ const Product = () => {
       const script = document.createElement("script");
       script.src="https://checkout.razorpay.com/v1/checkout.js";
 
-      const orderAmount = product.value;
-      const orderedProduct = {
-        id: product.id,
-        name: product.name,
-        qty: 1,
-        img: product.url
-      }
-
       script.onerror = () => {
         alert("Razorpay SDK failed to load. Try again later");
       };
       script.onload = async () => {
         try {
-          const res = await axios.post("https://amazonclone-sp.herokuapp.com/api/create-order", {
+
+          const orderAmount = product.accValue;
+          const orderedProducts = {
+            id: product.id,
+            name: product.name,
+            qty: 1,
+            img: product.url
+          }
+
+          const res = await axios.post("/api/create-order", {
             amount: orderAmount + '00'
           }, {
             withCredentials: true
           })
           
           const { id, amount, currency } = res.data.order;
-          const { key } = await axios.get("https://amazonclone-sp.herokuapp.com/api/get-razorpay-key");
+          const { key } = await axios.get("/api/get-razorpay-key");
 
           var today = new Date();
           var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
@@ -95,11 +101,10 @@ const Product = () => {
             amount: amount.toString(),
             currency: currency,
             order_id: id,
-            name: "Test payment",
-            description: "Thankyou for your order",
+            name: product.name,
             handler: async function(response) {
-              const result = await axios.post("https://amazonclone-sp.herokuapp.com/api/pay-order", {
-                orderedProducts: orderedProduct,
+              const result = await axios.post("/api/pay-order", {
+                orderedProducts: orderedProducts,
                 dateOrdered: date,
                 amount: amount,
                 razorpayPaymentId: response.razorpay_payment_id,
@@ -111,9 +116,9 @@ const Product = () => {
               navigate("/orders");
             },
             prefill: {
-              name: "John Doe",
-              email: "johndoe@example.com",
-              contact: "9999999999",
+              name: userData.name,
+              email: userData.email,
+              contact: '+91' + userData.number
             },
             theme: {
               color: '#1976D2'
@@ -138,6 +143,15 @@ const Product = () => {
       }
     }
   }
+
+  const today = new Date();
+  today.setDate(today.getDate() + 3);
+  const dayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const monthArr = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const day = dayArr[today.getDay()];
+  const date = today.getDate();
+  const month = monthArr[today.getMonth()];
+  const deliveryDate = day + ", " + date + " " + month;
 
   if (product) {
     return (

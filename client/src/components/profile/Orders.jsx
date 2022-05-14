@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import OrderTop from './OrderTop';
 import OrderedProduct from './OrderedProduct';
+import Loader from '../loader/Loader';
 
 const Orders = () => {
 
@@ -17,7 +18,7 @@ const Orders = () => {
   useEffect(function() {
     async function fetchUser() {
       try {
-        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
+        const res = await axios.get("/api/getAuthUser", {
           withCredentials: true
         })
   
@@ -68,6 +69,8 @@ const Orders = () => {
         </div>
       </div>
     )
+  } else {
+    <Loader />
   }
   
 }

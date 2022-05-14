@@ -18,7 +18,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('https://amazonclone-sp.herokuapp.com/api/getAuthUser', {withCredentials: true})
+    axios.get('/api/getAuthUser', {withCredentials: true})
         .then(function(res) {
           setUserData(res.data);
           setCartArr(res.data.cart);
@@ -61,14 +61,14 @@ const Cart = () => {
     };
     script.onload = async () => {
       try {
-        const res = await axios.post("https://amazonclone-sp.herokuapp.com/api/create-order", {
+        const res = await axios.post("/api/create-order", {
           amount: orderAmount + '00'
         }, {
           withCredentials: true
         })
         
         const { id, amount, currency } = res.data.order;
-        const { key } = await axios.get("https://amazonclone-sp.herokuapp.com/api/get-razorpay-key");
+        const { key } = await axios.get("/api/get-razorpay-key");
 
         var today = new Date();
         var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
@@ -78,10 +78,9 @@ const Cart = () => {
           amount: amount.toString(),
           currency: currency,
           order_id: id,
-          name: "Test payment",
-          description: "Thankyou for your order",
+          name: "Payment",
           handler: async function(response) {
-            const result = await axios.post("https://amazonclone-sp.herokuapp.com/api/pay-order", {
+            const result = await axios.post("/api/pay-order", {
               orderedProducts: orderedProducts,
               dateOrdered: date,
               amount: amount,
@@ -96,7 +95,7 @@ const Cart = () => {
           prefill: {
             name: userData.name,
             email: userData.email,
-            contact: userData.number,
+            contact: '+91' + userData.number
           },
           theme: {
             color: '#1976D2'
