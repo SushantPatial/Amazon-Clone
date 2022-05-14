@@ -17,7 +17,7 @@ const MiddleFooter = () => {
 
       <div className='middle-footer-top'>
         <div className='row'>
-          <div className='col-md-6 col-xl-3'>
+          <div className='col-6 col-xl-3'>
             <h6>Get to Know Us</h6>
             <p><a href="">About Us</a></p>
             <p><a href="">Careers</a></p>
@@ -26,13 +26,13 @@ const MiddleFooter = () => {
             <p><a href="">Gift a Smile</a></p>
             <p><a href="">Amazon Science</a></p>
           </div>
-          <div className='col-md-6 col-xl-3'>
+          <div className='col-6 col-xl-3'>
             <h6>Connect with Us</h6>
             <p><a href="https://www.facebook.com/AmazonIN">Facebook</a></p>
             <p><a href="https://twitter.com/AmazonIN">Twitter</a></p>
             <p><a href="https://www.instagram.com/amazondotin/">Instagram</a></p>
           </div>
-          <div className='col-md-6 col-xl-3'>
+          <div className='col-6 col-xl-3'>
             <h6>Make Money with Us</h6>
             <p><a href="">Sell on Amazon</a></p>
             <p><a href="">Sell under Amazon Accelerator</a></p>
@@ -42,7 +42,7 @@ const MiddleFooter = () => {
             <p><a href="">Advertise Your Products</a></p>
             <p><a href="">Amazon Pay on Merchants</a></p>
           </div>
-          <div className='col-md-6 col-xl-3'>
+          <div className='col-6 col-xl-3'>
             <h6>Let Us Help You</h6>
             <p><a href="">COVID-19 and Amazon</a></p>
             <p><a href="">Your Account</a></p>

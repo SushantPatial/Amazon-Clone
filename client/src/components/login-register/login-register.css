@@ -180,3 +180,12 @@
   border-color: #5EB762;
   box-shadow: inset 0px 0px 5px #b2e0b5;
 }
+
+@media screen and (max-width: 400px) {
+  .signin .form-details {
+    width: 90%;
+  }
+  .signin .new-to-amazon {
+    width: 90%;
+  }
+}

@@ -6,6 +6,13 @@
 .banner {
   position: relative;
 }
+.banner .carousel-img-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+.banner .carousel-img {
+  width: 100%;
+}
 .banner .carousel-control-next, .banner .carousel-control-prev {
   width: 6%;
   height: 50%;
@@ -142,4 +149,125 @@
 .cards-card .bottom-link:hover {
   text-decoration: underline;
   color: #D16F46;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .slider .swiper-slide {
+    margin-top: 10px;
+  }
+  .slider .swiper-slide .swiper-slide-img-wrapper {
+    height: 150px;
+  }
+  .slider .swiper-slide .swiper-slide-img {
+    height: 100%;
+  }
+  .slider .swiper-slide a p {
+    margin-top: 10px;
+  }
+  .slider .swiper-button-next, .slider .swiper-button-prev {
+    top: 35%;
+    width: 40px;
+    height: 80px;
+  }
+  .slider .swiper-button-next::after, .slider .swiper-button-prev::after {
+    font-size: 16px;
+  }
+  .cards-card h5 {
+    font-size: 16px;
+  }
+  .cards-card .img-container {
+    width: 100%;
+  }
+  .cards-card .img-container img {
+    height: auto;
+    width: 100%;
+  }
+  .multi-card {
+    display: none
+  }
+}
+@media screen and (max-width: 991px) {
+  .slider .swiper-slide .swiper-slide-img-wrapper {
+    height: 120px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .slider .swiper-slide .swiper-slide-img-wrapper {
+    height: 90px;
+  }
+  .slider .swiper-slide a p {
+    font-size: 14px;
+  }
+  .slider .swiper-button-next, .slider .swiper-button-prev {
+    width: 30px;
+    height: 60px;
+  }
+  .slider .swiper-button-next::after, .slider .swiper-button-prev::after {
+    font-size: 14px;
+  }
+  .slider .slider-heading h5 {
+    font-size: 16px;
+  }
+  .slider .slider-heading a {
+    margin-left: 15px;
+    margin-top: 0px;
+  }
+  .cards-section .col-xl-3 {
+    margin-bottom: 20px;
+  }
+  .cards-section .cards-card {
+    height: 100%;
+    padding-bottom: 0;
+  }
+  .cards-card h5 {
+    font-size: 14px;
+  }
+  .cards-card .img-container {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .cards-card .bottom-link {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .banner .carousel-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner .carousel-img {
+    width: 135%;
+  }
+  .slider .swiper-slide .swiper-slide-img-wrapper {
+    height: 60px;
+  }
+  .slider .swiper-slide a p {
+    font-size: 13px;
+  }
+  .slider .swiper-button-next, .slider .swiper-button-prev {
+    width: 20px;
+    height: 40px;
+  }
+  .slider .swiper-button-next::after, .slider .swiper-button-prev::after {
+    font-size: 13px;
+  }
+  .slider .slider-heading h5 {
+    font-size: 14px;
+  }
+  .slider .slider-heading a {
+    margin-left: 15px;
+    margin-top: 1px;
+    font-size: 11px;
+    width: 100px
+  }
+  .cards-card h5 {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .slider .slider-heading a {
+    width: 130px
+  }
 }

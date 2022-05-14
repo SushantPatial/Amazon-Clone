@@ -81,8 +81,22 @@
     padding: 40px 20px;
   }
   .middle-footer .middle-footer-top .col-xl-3 {
-    text-align: center;
-    margin: 20px 0;
+    margin: 15px 0;
+  }
+  .middle-footer .middle-footer-top h6 {
+    font-size: 14px;
+  }
+  .middle-footer .middle-footer-top p {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .middle-footer .middle-footer-top h6 {
+    font-size: 13px;
+  }
+  .middle-footer .middle-footer-top p {
+    font-size: 12px;
   }
 }
 .middle-footer .middle-footer-bottom {

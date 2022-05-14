@@ -10,43 +10,53 @@ const Banner = () => {
       >
 
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="images/banner1.jpg"
-            alt="First slide"
-          />
+          <div className='carousel-img-wrapper'>
+            <img
+              className="carousel-img"
+              src="images/banner1.jpg"
+              alt="First slide"
+            />
+          </div>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="images/banner2.jpg"
-            alt="First slide"
-          />
+          <div className='carousel-img-wrapper'>
+            <img
+              className="carousel-img"
+              src="images/banner2.jpg"
+              alt="Second slide"
+            />
+          </div>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="images/banner3.jpg"
-            alt="First slide"
-          />
+          <div className='carousel-img-wrapper'>
+            <img
+              className="carousel-img"
+              src="images/banner3.jpg"
+              alt="Third slide"
+            />
+          </div>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="images/banner4.jpg"
-            alt="First slide"
-          />
+          <div className='carousel-img-wrapper'>
+            <img
+              className="carousel-img"
+              src="images/banner4.jpg"
+              alt="Fourth slide"
+            />
+          </div>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="images/banner5.jpg"
-            alt="First slide"
-          />
+          <div className='carousel-img-wrapper'>
+            <img
+              className="carousel-img"
+              src="images/banner5.jpg"
+              alt="Fifth slide"
+            />
+          </div>
         </Carousel.Item>
         
       </Carousel>
