@@ -59,6 +59,86 @@ const Product = () => {
   const month = monthArr[today.getMonth()];
   const deliveryDate = day + ", " + date + " " + month;
 
+  // Buy now
+  function loadRazorpay() {
+    try {
+      const script = document.createElement("script");
+      script.src="https://checkout.razorpay.com/v1/checkout.js";
+
+      const orderAmount = product.value;
+      const orderedProduct = {
+        id: product.id,
+        name: product.name,
+        qty: 1,
+        img: product.url
+      }
+
+      script.onerror = () => {
+        alert("Razorpay SDK failed to load. Try again later");
+      };
+      script.onload = async () => {
+        try {
+          const res = await axios.post("https://amazonclone-sp.herokuapp.com/api/create-order", {
+            amount: orderAmount + '00'
+          }, {
+            withCredentials: true
+          })
+          
+          const { id, amount, currency } = res.data.order;
+          const { key } = await axios.get("https://amazonclone-sp.herokuapp.com/api/get-razorpay-key");
+
+          var today = new Date();
+          var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+
+          const options = {
+            key: key,
+            amount: amount.toString(),
+            currency: currency,
+            order_id: id,
+            name: "Test payment",
+            description: "Thankyou for your order",
+            handler: async function(response) {
+              const result = await axios.post("https://amazonclone-sp.herokuapp.com/api/pay-order", {
+                orderedProducts: orderedProduct,
+                dateOrdered: date,
+                amount: amount,
+                razorpayPaymentId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature
+              }, {
+                withCredentials: true
+              })
+              navigate("/orders");
+            },
+            prefill: {
+              name: "John Doe",
+              email: "johndoe@example.com",
+              contact: "9999999999",
+            },
+            theme: {
+              color: '#1976D2'
+            }
+          };
+
+          const paymentObject = new window.Razorpay(options);
+          paymentObject.open();
+
+          
+
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      document.body.appendChild(script);
+    }
+    catch (error) {
+      if (error.response.data.message === "No token provided") {
+        navigate('/login'); // Go to login if there's no cookie
+      }
+    }
+  }
+
   if (product) {
     return (
       <div className='product-section'>
@@ -95,7 +175,7 @@ const Product = () => {
           <h3><span><span className='sup'>₹</span>{ product.value }<span className='sup'>00</span></span></h3>
           <p><span>FREE delivery:</span> {deliveryDate}</p>
           <button id="addtocart-btn" onClick={ () => addToCart(product.id) }>Add to Cart</button>
-          <button>Buy Now</button>
+          <button onClick={loadRazorpay} >Buy Now</button>
         </div>
       </div>
     )
