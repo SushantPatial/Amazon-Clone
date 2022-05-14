@@ -13,12 +13,14 @@ const Cart = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [cartArr, setCartArr] = useState([]);
+  const [userData, setUserData] = useState();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('https://amazonclone-sp.herokuapp.com/api/getAuthUser', {withCredentials: true})
         .then(function(res) {
+          setUserData(res.data);
           setCartArr(res.data.cart);
           setIsLoading(false);
         })
@@ -92,9 +94,9 @@ const Cart = () => {
             navigate("/orders");
           },
           prefill: {
-            name: "John Doe",
-            email: "johndoe@example.com",
-            contact: "9999999999",
+            name: userData.name,
+            email: userData.email,
+            contact: userData.number,
           },
           theme: {
             color: '#1976D2'
