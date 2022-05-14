@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './home.css';
 import Loader from '../loader/Loader';
+import { NavLink } from 'react-router-dom';
 
 // Importing swiper and its components
 import { Swiper, SwiperSlide } from "swiper/react";
