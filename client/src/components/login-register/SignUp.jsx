@@ -36,7 +36,7 @@ const SignUp = () => {
     const { name, number, email, password, confirmPassword } = signUpInfo;
 
     try {
-      const res = await axios.post('/api/register', { 
+      const res = await axios.post('https://amazonclone-sp.herokuapp.com/api/register', { 
         name, number, email, password, confirmPassword
       }, {
         headers: {

@@ -41,7 +41,7 @@ const Navbar = () => {
       // Fetching user data
       async function fetchUser() {
         try {
-          const res = await axios.get("/api/getAuthUser", {
+          const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
             withCredentials: true
           });
   
@@ -77,7 +77,7 @@ const Navbar = () => {
 
       // Fetching products
       async function fetchProducts() {
-        const res = await axios.get("/api/products");
+        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/products");
         setProducts(res.data);
       }
 
@@ -89,7 +89,7 @@ const Navbar = () => {
     // Logout 
       function logout() {
         try {
-          const res = axios.get("/api/logout", {
+          const res = axios.get("https://amazonclone-sp.herokuapp.com/api/logout", {
             withCredentials: true
           })
 
@@ -183,9 +183,9 @@ const Navbar = () => {
           {
             products.filter((productsFound) => {
               return productsFound.name.toLowerCase().includes(searchText.toLowerCase())
-            }).slice(0, 5).map((product) => {
+            }).slice(0, 5).map((product, index) => {
               return (
-                <ListItem className='list-item'>
+                <ListItem key={index} className='list-item'>
                   <NavLink to={`/product/${product.id}`}>
                   {product.name}
                   </NavLink>

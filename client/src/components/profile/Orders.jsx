@@ -17,7 +17,7 @@ const Orders = () => {
   useEffect(function() {
     async function fetchUser() {
       try {
-        const res = await axios.get("/api/getAuthUser", {
+        const res = await axios.get("https://amazonclone-sp.herokuapp.com/api/getAuthUser", {
           withCredentials: true
         })
   

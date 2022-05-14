@@ -17,7 +17,7 @@ const Product = () => {
   useEffect(function() {
     async function fetchSingleProduct() {
       try {
-        const res = await axios.get('/api/product/' + id);
+        const res = await axios.get('https://amazonclone-sp.herokuapp.com/api/product/' + id);
         setProduct(res.data);
         setIsLoading(false);
       } catch (error) {
