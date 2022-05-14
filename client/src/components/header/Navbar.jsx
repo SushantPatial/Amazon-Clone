@@ -196,11 +196,11 @@ const Navbar = () => {
         </List>
 
         <div className="buttons">
-          <NavLink to={ loggedIn ? "/profile" : "/login" } className="login">
+          <a href={ loggedIn ? "/profile" : "/login" } className="login">
             <div className="button-text">
               Hello, {loginMsg}
             </div>
-          </NavLink>
+          </a>
           <NavLink to="/cart" className="cart">
             <Badge badgeContent={cartValue} color="primary">
               <ShoppingCartOutlinedIcon id="cart-icon" />
