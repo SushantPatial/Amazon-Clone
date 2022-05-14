@@ -52,12 +52,12 @@ const Slider = (props) => {
                 const path = "product/" + product.id;
                 return (
                   <SwiperSlide className='swiper-slide' key={product.id}>
-                    <a href={path}>
+                    <NavLink to={path}>
                       <div className='swiper-slide-img-wrapper'>
                         <img src={product.url} className="swiper-slide-img" alt={product.url} />
                       </div>
                       <p>{product.price}</p>
-                    </a>
+                    </NavLink>
                   </SwiperSlide>
                 )
               })

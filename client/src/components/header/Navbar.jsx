@@ -129,16 +129,16 @@ const Navbar = () => {
       >
         <div className='profile-options'>
           <h5>Hello, {loginMsg}</h5>
-          <a href='/profile'>
+          <NavLink to='/profile'>
             <div className='profile-option'>
               <PersonOutlineOutlinedIcon className='profile-icon' /> Your Account
             </div>
-          </a>
-          <a href='/orders'>
+          </NavLink>
+          <NavLink to='/orders'>
             <div className='profile-option'>
               <ShoppingCartOutlinedIcon className='profile-icon' /> Your Orders
             </div>
-          </a>
+          </NavLink>
           <div>
             <div className='profile-option' onClick={ logout }>
               <LogoutOutlinedIcon className='profile-icon' /> Sign Out
@@ -186,9 +186,9 @@ const Navbar = () => {
             }).slice(0, 5).map((product) => {
               return (
                 <ListItem className='list-item'>
-                  <a href={`/product/${product.id}`}>
+                  <NavLink to={`/product/${product.id}`}>
                   {product.name}
-                  </a>
+                  </NavLink>
                 </ListItem>
               )
             })
