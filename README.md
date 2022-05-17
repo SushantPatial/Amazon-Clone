@@ -1,5 +1,5 @@
 # <div align="center">Amazon Clone</div>
 
-### <div align="center">By Sushant Patial</div>
+### A fully functional E-commerce website
 
 #### Demo Link: https://amazonclone-sp.herokuapp.com/
