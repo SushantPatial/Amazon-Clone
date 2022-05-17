@@ -4,7 +4,7 @@
 
 #### This is a clone of the well-known e-commerce website Amazon. Customers can browse products and make purchases. It offers a sign in/sign up feature that keeps track of the user's cart and purchases. It was built with React on the frontend, Node and Express on the backend, MongoDB for data storage, and Razorpay for payment integration.
 
-### Features
+## Features
 <ul>
   <li>User Sign up / Sign in</li>
   <li>Logout from your account</li>
@@ -20,7 +20,7 @@
   <li>Payment with multiple options</li>
 </ul>
 
-### Technology Used
+## Technology Used
 <ul>
   <li><strong>IDE:</strong> Visual Studio Code</li>
   <li><strong>Frontend:</strong> React.js</li>
@@ -32,22 +32,22 @@
   <li><strong>Payment Integration:</strong> Razorpay</li>
 </ul>
 
-### Demo Link
+## Demo Link
 https://amazonclone-sp.herokuapp.com/
 
-### Download Files
+## Download Files
 * Go to my GitHub repository: https://github.com/dudenayak/Netflix_Clone
 * Download zip or clone repository
 * Then open the folder in your IDE 
 
-### To start the server
+## To start the server
 ```shell
 npm install
 nodemon
 ```
 The server is now running at http://localhost:8000/ 
 
-### To start the client
+## To start the client
 ```shell
 cd client
 npm install
@@ -55,7 +55,7 @@ npm start
 ```
 The client is now running at http://localhost:3000/ 
 
-### Screenshots
+## Screenshots
 #### Home Page
 
 #### Sign Up
