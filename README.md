@@ -36,7 +36,7 @@ This is a clone of the well-known e-commerce website Amazon. Customers can brow
 https://amazonclone-sp.herokuapp.com/
 
 ## Download Files 👇
-* Go to my GitHub repository: https://github.com/dudenayak/Netflix_Clone
+* Go to my GitHub repository: https://github.com/SushantPatial/Amazon-Clone
 * Download zip or clone repository
 * Then open the folder in your IDE 
 
