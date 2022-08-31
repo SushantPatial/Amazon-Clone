@@ -58,7 +58,7 @@ const Orders = () => {
                 let orderItem = order.orderInfo;
                 let orderedProducts = orderItem.products;
 
-                console.log(orderItem);
+                console.log("---NEW ORDER---");
                 console.log(orderedProducts);
 
                 return (
@@ -66,6 +66,7 @@ const Orders = () => {
                     <OrderTop order={ orderItem } />
                     <div className='order-bottom'>
                       { orderedProducts ? orderedProducts.map((product, index) => {
+                        console.log(product);
                           return <OrderedProduct key={index} product={product} />
                         }) : ""
                       } 
