@@ -62,10 +62,10 @@ const Orders = () => {
                   <div className='order'>
                     <OrderTop order={ orderItem } />
                     <div className='order-bottom'>
-                      { orderedProducts.map((product, index) => {
+                      { orderedProducts ? orderedProducts.map((product, index) => {
                           return <OrderedProduct key={index} product={product} />
-                        })  
-                      }
+                        }) : ""
+                      } 
                     </div>
                   </div>
                 )
