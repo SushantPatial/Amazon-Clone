@@ -58,6 +58,9 @@ const Orders = () => {
                 let orderItem = order.orderInfo;
                 let orderedProducts = orderItem.products;
 
+                console.log(orderItem);
+                console.log(orderedProducts);
+
                 return (
                   <div className='order'>
                     <OrderTop order={ orderItem } />
